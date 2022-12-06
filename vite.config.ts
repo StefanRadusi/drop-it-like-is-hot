@@ -25,7 +25,7 @@ export default defineConfig((configEnv) => ({
       entry: resolve('src', 'components/index.ts'),
       name: 'DropItLikeIsHot',
       formats: ['es', 'umd'],
-      fileName: (format) => `index.${format}.js`,
+      fileName: (format) => `drop-it-like-is-hot.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
