@@ -9,6 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint-staged": "lint-staged",
     "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
     "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc",
     "prepare": "husky install"
@@ -27,6 +28,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "path": "^0.12.7",
     "prettier": "^2.8.0",
     "react": "^18.2.0",
@@ -48,7 +50,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "npm run eslint",
+      "npm run lint",
       "npm run format"
     ]
   },
