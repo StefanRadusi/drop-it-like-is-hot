@@ -1,17 +1,21 @@
 @keyframes loadingAnimation {
-    from {transform: translateY(0px);}
-    to {transform: translateY(5px);}
+  from {
+    transform: translateY(0px);
   }
+  to {
+    transform: translateY(5px);
+  }
+}
 
 .dilih__loading {
-    position: absolute;
-    left:5px;
-    top: 100%;
-    display: flex;
-    gap: 5px;
+  position: absolute;
+  left: 5px;
+  top: 100%;
+  display: flex;
+  gap: 5px;
 }
 
 .dilih__loading__point {
-    margin: 0;
-    animation: loadingAnimation ease 0.3s infinite alternate;
+  margin: 0;
+  animation: loadingAnimation ease 0.3s infinite alternate;
 }
