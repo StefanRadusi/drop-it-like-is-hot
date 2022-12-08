@@ -12,9 +12,13 @@
     "lint-staged": "lint-staged",
     "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
     "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest run",
+    "prebuild": "npm run test"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@types/node": "^18.11.11",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
@@ -28,6 +32,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "husky": "^8.0.2",
+    "jsdom": "^20.0.3",
     "lint-staged": "^13.1.0",
     "path": "^0.12.7",
     "prettier": "^2.8.0",
@@ -37,7 +42,8 @@
     "vite": "^3.2.3",
     "vite-plugin-dts": "^1.7.1",
     "vite-plugin-linter": "^1.2.0",
-    "vite-tsconfig-paths": "^3.6.0"
+    "vite-tsconfig-paths": "^3.6.0",
+    "vitest": "^0.25.5"
   },
   "peerDependencies": {
     "react": "18.x",

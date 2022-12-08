@@ -37,4 +37,9 @@ export default defineConfig((configEnv) => ({
       },
     },
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './tests/setup.ts',
+  },
 }));
