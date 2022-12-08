@@ -120,3 +120,71 @@ npm install
 npm run dev
 ```
 After that open a browser and go to: http://localhost:5173/
+
+<br>
+<br>
+
+# Deel interview answers
+## What is the difference between Component and PureComponent?
+In most cases you would use normal react components, but as a rule react will re-render a component if its parent has rendered. To squeeze some performance you can opt for a PureComponent which wil re-render only if the props or internal state has changed, and in case of props the comparison is shallow, meaning if you pass objects from parent to the child component, the child will not re-render if the content of the objects has changed. The fact that the comparison is shallow is problematic. For example if you pass an array from parent to child, and change something in the parent relative to this array the app will not update visually.
+
+<br>
+
+## Context + ShouldComponentUpdate might be dangerous.
+With ShouldComponentUpdate you can pretty much stop the context prorogation from parent to child. For example if you have like Theme in your app and you use context to send color values throughout your components, if a parent component decides to use ShouldComponentUpdate and mess with the natural rendering of the component then any change in the Them will no be visible for child components of the parent component that uses ShouldComponentUpdate.
+
+<br>
+
+## Describe 3 ways to pass information from a component to its PARENT.
+- pass function prop from parent to child as a callback and use its argument to pass data from child back to parent
+- use context api, which basically can connect every component including parent and child
+- Not recommended: use ref as is a mutable object
+
+<br>
+
+## Give 2 ways to prevent components from re-rendering.
+- use shouldComponentUpdate and return false, but may still result in a re-rendering of the component.
+- use memo function from react as wrapper on your function component, you can even have fine control to when should a the component render using the second argument of memo, the dependency array
+
+<br>
+
+## What is a fragment and why do we need it?
+Fragment is react component that is no adding actually a DOM Element, just a Virtual DOM. Because React is imposing for a component to return a single node, in some cases you want to return more then one component. <br>
+Follow the next example:
+```jsx
+export const Component1 = () => {
+  return (
+    <div>
+      <Child1 />
+      <Child2 />
+    </div>
+  )
+}
+```
+If you want to export Child1 & Child2 without adding a div to DOM, you can right like this:
+```jsx
+export const Component1 = () => {
+  return (
+    <>
+      <Child1 />
+      <Child2 />
+    </>
+  )
+}
+```
+Some component may, especially the own that are not develop by you may depend on the fact that its parent is a dom element, so by using fragment you may break the app.
+
+<br>
+
+## Give 3 examples of the HOC pattern.
+- reuse the same behavior but on different components. For example if you have \<Input \> and a \<Textarea /> kind of components, instead of creating the error handling logic in both you can use a HOC to define the logic and wraps the components in it.
+- use HOC to connect to a Context like Redux was doing back in the day :)
+- use a HOC to define a set of predefine props that should be passed to the wrapped components
+
+<br>
+
+## What's the difference in handling exceptions in promises, callbacks and async...await.
+| type | error handling | description  |  
+| ------ | ------ | ------ |
+| async,await | try {} catch {} | When throw new Error() we can catch it if we await the promise inside the try {} as long as we are in a async function and the promise must not trigger resolve before the throw. We can't catch it if the error was called in a different call stack, like being in a Timer callback function
+| promise | .catch() | You can call reject() function to handle errors and reach .catch().When throw new Error() we can catch it if resolve was not called before throw or in callback function in a Timer. 
