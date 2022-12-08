@@ -188,3 +188,39 @@ Some component may, especially the own that are not develop by you may depend on
 | ------ | ------ | ------ |
 | async,await | try {} catch {} | When throw new Error() we can catch it if we await the promise inside the try {} as long as we are in a async function and the promise must not trigger resolve before the throw. We can't catch it if the error was called in a different call stack, like being in a Timer callback function
 | promise | .catch() | You can call reject() function to handle errors and reach .catch().When throw new Error() we can catch it if resolve was not called before throw or in callback function in a Timer. 
+
+<br>
+
+## How many arguments does setState take and why is it async.
+setState take 2 arguments, the not so common used the second one is a callback that is called after the new state has changed. Because setState is asynchronous for performance reasons you may have issues with the current value of state if you need to chain 2 setState one after another.
+
+<br>
+
+## List the steps needed to migrate a Class to Function Component.
+- change the Class component name to something like component_old
+- create a new function component with the name of the component you want to migrate
+- copy paste the render function content of the class component into the function component return 
+- migrate the class component state object into individual states in the function component, by using "useState" hook
+- look for all occurrences of this.setState() and change to setState function returned from "useState" hook
+- migrate lifecycle methods like componentDidMount, componentDidUpdate, componentDidUnmount into "useEffect" hooks counterparts
+- in case you used componentShouldUpdate, try wrapping the function component into memo function from react, and use the dependency array of memo to rich the same result
+
+<br>
+
+## List a few ways styles can be used with components.
+- if referring to css style in a style sheet files, this can be used to visually change the aspect o a component. By adding or removing css classes we can provide visual interaction to the users, like hide/show component, highlighting, changing the layout, color when different events happens on the user interface, like clicking, resizing, typing. Something to keep in mind all the css rules in the style sheet are static and can't be change on runtime
+- we can pass a style object to our react native component like divs, inputs, etc. This is like setting inline style in a html document, but with this approach we can change style values on run runtime, for example we can increase the size of a div based on how many click a user had done on the window.
+- we can animate component as well using style with transitions or animation keyframe
+
+<br>
+
+## How to render an HTML string coming from the server.
+If we are in React world we can use something like "dangerouslySetInnerHTML" attribute on a returned div from a component, for example
+```jsx
+const apiResponse = "<p>Something</p>";
+
+const Component = () => {
+  return <div dangerouslySetInnerHTML={{__html: apiResponse}} />
+}
+```
+With this approach we can tell React not to care about the content inside the div and not include it into its virtual dom. We can do something similar by targeting a DOM element with vanilla javascript and setting the innerHtml attribute, but it may be overwritten at a re-render.
