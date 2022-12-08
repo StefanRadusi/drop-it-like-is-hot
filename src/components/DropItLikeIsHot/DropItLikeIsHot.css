@@ -1,0 +1,11 @@
+.dilih {
+    width: 250px;
+    background: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.dilih__label {
+    margin-bottom: 5px;
+}

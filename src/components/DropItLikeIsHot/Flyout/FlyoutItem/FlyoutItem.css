@@ -1,0 +1,18 @@
+.dilih__flyout__item {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.dilih__flyout__item:hover {
+    background: lightgrey;
+}
+
+.dilih__flyout__item__highlighted-text {
+    background: yellow;
+}
+
