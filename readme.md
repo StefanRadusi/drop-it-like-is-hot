@@ -9,17 +9,17 @@ As much as possible DropItLikeIsHot doesn't hold its own state, but rather it ne
 
 ## Features
 
-- customizable with you own styles
+- customizable with your own styles
 - accepts your own async function
 - debounce api requests when user types
 - optimized items rendering in case of large list of options
-- render dropdown's flyout above the input in case is out of view port
+- render dropdown's flyout above the input in case it is out of view port
 
 <br>
 
 ## Requirements
 
-- use the component in a **react app**, and event better if is in **typescript** environment
+- use the component in a **react app**, and event better if it is in a **typescript** environment
 
 <br>
 
@@ -93,7 +93,8 @@ You can check directly the component on code sandbox:<br>
 <br>
 
 # About this repo
-This a repo that can build it self as a library of components, checkout the following file:
+This a repo that can build it self as a library of components, here is the npm link: https://www.npmjs.com/package/drop-it-like-is-hot.<br>
+Checkout the following file, for how the to publish to npm:
 ```
 /.github/workflows/publish.yml
 ```
@@ -110,7 +111,7 @@ This a repo that can build it self as a library of components, checkout the foll
 <br>
 
 ## Running locally
-First you need to install [NodeJS](https://nodejs.org/en/download/) on your local machine. The open a terminal and follow the next steps:
+First you need to install [NodeJS](https://nodejs.org/en/download/) on your local machine. Then open a terminal and follow the next steps:
 
 ```sh
 git clone https://github.com/StefanRadusi/drop-it-like-is-hot
